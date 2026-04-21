@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leafy Dreams - Planting a little happiness</title>
+    <meta name="description" content="Welcome to Leafy Dreams. Enchanting Bonsai and Table Pots. Planting a little happiness today!">
+    
+    <!-- Open Graph / WhatsApp Preview Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Leafy Dreams - Botanical Art">
+    <meta property="og:description" content="Enchanting Bonsai and Table Pots. Planting a little happiness today!">
+    <meta property="og:image" content="assets/images/WhatsApp Image 2026-03-09 at 12.33.28.jpeg">
+    <meta property="og:url" content="https://leafydreams.com">
+    <link rel="icon" type="image/jpeg" href="assets/images/logo.jpeg">
+    <link rel="apple-touch-icon" href="assets/images/logo.jpeg">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <div class="cursor-glow"></div>
+    <div class="custom-cursor"><i data-lucide="leaf"></i></div>
+
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Trust Notification -->
+    <div id="trustNotification" class="trust-notification"></div>
+
+    <!-- Floating Cart Button -->
+    <div class="floating-cart" id="floatingCart" onclick="toggleCartModal()">
+        <i data-lucide="shopping-basket"></i>
+        <span id="cartCount" class="cart-badge">0</span>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="assets/images/logo.jpeg" alt="Logo" class="sidebar-logo">
+            <span class="brand-name">Leafy Dreams</span>
+        </div>
+
+        <div class="sidebar-search">
+            <div class="search-wrapper">
+                <i data-lucide="search"></i>
+                <input type="text" id="productSearch" placeholder="Search creations...">
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="#home" class="active"><span class="icon"><i data-lucide="home"></i></span> Home</a></li>
+                <li class="has-submenu">
+                    <a href="#shop"><span class="icon"><i data-lucide="sprout"></i></span> Collection</a>
+                    <ul class="submenu">
+                        <li><button class="side-cat-item active" onclick="filterCategory('all')"><i data-lucide="sparkles"></i> All</button></li>
+                        <li><button class="side-cat-item" onclick="filterCategory('indoor-plants')"><i data-lucide="home"></i> Indoor</button></li>
+                        <li><button class="side-cat-item" onclick="filterCategory('air-purifying')"><i data-lucide="wind"></i> Air Purifying</button></li>
+                        <li><button class="side-cat-item" onclick="filterCategory('desk-plants')"><i data-lucide="monitor"></i> Desk</button></li>
+                        <li><button class="side-cat-item" onclick="filterCategory('succulents-cactus')"><i data-lucide="sprout"></i> Succulents</button></li>
+                        <li><button class="side-cat-item" onclick="filterCategory('bonsai')"><i data-lucide="tree-deciduous"></i> Bonzai</button></li>
+                        <li><button class="side-cat-item" onclick="filterCategory('hand-painted-pots')"><i data-lucide="palette"></i> Pots</button></li>
+                        <li><button class="side-cat-item" onclick="filterCategory('customized-gift')"><i data-lucide="gift"></i> Gifts</button></li>
+                    </ul>
+                </li>
+                <li><a href="#wishlist" onclick="showWishlist()"><span class="icon"><i data-lucide="heart"></i></span>
+                        Wishlist <span id="wishCount" class="badge">0</span></a></li>
+                <li><a href="#feedback"><span class="icon"><i data-lucide="message-square-quote"></i></span>
+                        Feedback</a></li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-mode">
+            <button id="themeToggle" class="mode-btn">
+                <span class="icon-sun"><i data-lucide="sun"></i></span>
+                <span class="icon-moon"><i data-lucide="moon"></i></span>
+                <span class="mode-text">Dark Forest</span>
+            </button>
+        </div>
+        <div class="sidebar-footer">
+            <a href="https://wa.me/94763428225?text=Hi%20Leafy%20Dreams!%20🌿%20I%20would%20like%20to%20chat%20with%20you." target="_blank" class="side-wa-btn">
+                WhatsApp Us <i data-lucide="phone-call"></i>
+            </a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-header">
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i data-lucide="menu"></i>
+            </button>
+            <div class="header-logo-container" data-aos="fade-right">
+                <div class="animated-logo-wrapper">
+                    <img src="assets/images/logo.jpeg" alt="Leafy Dreams Logo" class="main-logo-img">
+                </div>
+            </div>
+            <div class="header-titles" data-aos="fade-left">
+                <h1 class="brand-name">Leafy Dreams</h1>
+                <h2 class="glamour-text">Planting a little <span>happiness.</span></h2>
+            </div>
+        </header>
+
+        <section id="home" class="hero-minimal">
+            <div class="hero-featured" data-aos="zoom-out">
+                <div class="hero-content">
+                    <span class="hero-tag">Handcrafted with Love</span>
+                    <h1 class="hero-main-title">Enchanting Botanical Art for Your Space</h1>
+                    <p>Discover the rare beauty of Bonsai and unique Table Pots. Planting a little happiness in every corner of your home.</p>
+                    <div class="hero-actions">
+                        <button onclick="document.getElementById('shop').scrollIntoView()" class="btn-submit">Explore Collection <i data-lucide="arrow-right"></i></button>
+                    </div>
+                </div>
+                <div class="hero-image-container">
+                    <img src="assets/images/WhatsApp Image 2026-03-09 at 12.33.28.jpeg" alt="Featured Plant" class="hero-featured-image">
+                </div>
+            </div>
+        </section>
+
+        <section id="shop" class="shop-section">
+            <div class="section-header">
+                <h2 class="section-title" data-aos="fade-up">The Gallery</h2>
+                <div class="collection-tabs" data-aos="fade-up">
+                    <button class="tab-btn active" onclick="filterCategory('all')">All</button>
+                    <button class="tab-btn" onclick="filterCategory('indoor-plants')">Indoor</button>
+                    <button class="tab-btn" onclick="filterCategory('air-purifying')">Air Purifying</button>
+                    <button class="tab-btn" onclick="filterCategory('desk-plants')">Desk Plants</button>
+                    <button class="tab-btn" onclick="filterCategory('succulents-cactus')">Succulents</button>
+                    <button class="tab-btn" onclick="filterCategory('bonsai')">Bonzai</button>
+                    <button class="tab-btn" onclick="filterCategory('hand-painted-pots')">Pots</button>
+                    <button class="tab-btn" onclick="filterCategory('customized-gift')">Gifts</button>
+                </div>
+
+            </div>
+            <div class="product-grid" id="productGrid">
+                <!-- Products injected by JS -->
+            </div>
+        </section>
+
+        <!-- Testimonials Slider -->
+        <section id="testimonials" class="testimonials-section">
+            <div class="slider-container" data-aos="fade-up">
+                <h2 class="section-title">Client Love</h2>
+                <div class="testimonial-slider" id="testimonialSlider">
+                    <!-- JS Injected Sliders -->
+                </div>
+                <div class="slider-dots" id="sliderDots"></div>
+            </div>
+        </section>
+
+        <!-- Care Guide -->
+        <section id="care-guide" class="care-guide-section" data-aos="fade-up">
+            <h2 class="section-title">Plant Care 101</h2>
+            <div class="care-grid">
+                <div class="care-card" onclick="toggleCare(this)">
+                    <div class="care-icon"><i data-lucide="sun"></i></div>
+                    <h3>Sunlight</h3>
+                    <p class="care-detail">Most Bonsai love bright, indirect light. Avoid harsh afternoon sun.</p>
+                </div>
+                <div class="care-card" onclick="toggleCare(this)">
+                    <div class="care-icon"><i data-lucide="droplet"></i></div>
+                    <h3>Watering</h3>
+                    <p class="care-detail">Feel the soil. Only water when the top inch is slightly dry.</p>
+                </div>
+                <div class="care-card" onclick="toggleCare(this)">
+                    <div class="care-icon"><i data-lucide="thermometer"></i></div>
+                    <h3>Temperature</h3>
+                    <p class="care-detail">Keep away from direct AC drafts or heater vents.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Plant Quiz Trigger -->
+        <section id="quiz" class="quiz-cta" data-aos="zoom-in">
+            <div class="quiz-card">
+                <i data-lucide="sparkles" class="quiz-bg-icon"></i>
+                <h2>Find Your Perfect Plant Match?</h2>
+                <p>Take our 1-minute quiz and discover your ideal botanical soulmate.</p>
+                <button onclick="startQuiz()" class="btn-quiz">Take the Quiz</button>
+            </div>
+        </section>
+
+        <section id="feedback" class="feedback-section">
+            <div class="feedback-container" data-aos="fade-up">
+                <h2 class="section-title">Share Your Experience</h2>
+                <p class="section-subtitle">Your happiness inspires our growth.</p>
+
+                <form id="feedbackForm" class="glamour-form">
+                    <div class="input-group">
+                        <input type="text" id="custName" placeholder="Your Name" required>
+                    </div>
+                    <div class="input-group">
+                        <textarea id="custMessage" rows="4" placeholder="Share your thoughts about your Leafy Dream..."
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">
+                        Send Feedback <i data-lucide="send"></i>
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Quick View Modal -->
+    <div id="quickViewModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
+            <div id="modalBody">
+                <!-- JS Injected Modal Content -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Quiz Modal -->
+    <div id="quizModal" class="modal">
+        <div class="modal-content quiz-modal-content">
+            <button class="modal-close" onclick="closeQuiz()"><i data-lucide="x"></i></button>
+            <div id="quizBody">
+                <!-- JS Injected Quiz Content -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Selection Cart Modal -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content cart-modal-content">
+            <button class="modal-close" onclick="toggleCartModal()"><i data-lucide="x"></i></button>
+            <h2 class="section-title">Your Selection</h2>
+            <div id="cartBody" class="cart-body">
+                <!-- JS Injected Cart Content -->
+            </div>
+            <div class="cart-footer">
+                <button class="btn-submit" onclick="sendBulkInquiry()">
+                    Inquire via WhatsApp <i data-lucide="send"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-bottom-nav">
+        <a href="#home" class="nav-item active">
+            <i data-lucide="home"></i>
+            <span>Home</span>
+        </a>
+        <a href="#shop" class="nav-item">
+            <i data-lucide="sprout"></i>
+            <span>Shop</span>
+        </a>
+        <a href="#wishlist" class="nav-item" onclick="showWishlist()">
+            <i data-lucide="heart"></i>
+            <span>Saved</span>
+        </a>
+        <a href="#cart" class="nav-item" onclick="toggleCartModal()">
+            <i data-lucide="shopping-basket"></i>
+            <span>Cart</span>
+        </a>
+    </nav>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/94763428225?text=Hi%20Leafy%20Dreams!%20🌿%20I%20just%20visited%20your%20website%20and%20would%20like%20to%20know%20more." class="floating-wa-btn" target="_blank" title="Chat with us on WhatsApp">
+        <i data-lucide="phone" class="wa-icon-main"></i>
+        <span class="wa-tooltip">Chat with us!</span>
+    </a>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-info" data-aos="fade-up">
+                <h3 class="brand-name">Leafy Dreams</h3>
+                <p>Nurturing nature, one leaf at a time. Join our green revolution.</p>
+                <div class="social-links">
+                    <a href="https://wa.me/94763428225?text=Hi%20Leafy%20Dreams!%20🌿%20I%20would%20like%20to%20chat%20with%20you." target="_blank" class="social-btn wa">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                    <a href="https://www.facebook.com/share/1ELHJrLFSC/" target="_blank" class="social-btn fb">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/indoor_plants_happiness?igsh=OTRoNzVlaDJmb2F3" target="_blank" class="social-btn ig">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@raduga1994?_r=1&_t=ZS-95SBfdyHroD" target="_blank" class="social-btn tk">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="contact-details" data-aos="fade-up" data-aos-delay="200">
+                <p><span><i data-lucide="phone"></i></span> +94 76 342 8225</p>
+                <p><span><i data-lucide="map-pin"></i></span> Sri Lanka</p>
+                <p><span><i data-lucide="mail"></i></span> leafydreams94@gmail.com</p>
+                <div class="contact-buttons">
+                    <a href="https://mail.google.com/mail/?view=cm&to=leafydreams94@gmail.com&su=Inquiry%20from%20Leafy%20Dreams%20Website&body=Hi%20Leafy%20Dreams%2C%0A%0AI%20visited%20your%20website%20and%20would%20like%20to%20inquire%20about%20your%20products.%0A%0AThank%20you!" target="_blank" class="email-us-btn">
+                        <i data-lucide="mail"></i> Email Us
+                    </a>
+                    <a href="https://wa.me/94763428225?text=Hi%20Leafy%20Dreams!%20🌿%20I%20would%20like%20to%20chat%20with%20you." target="_blank" class="whatsapp-us-btn">
+                        <i data-lucide="phone"></i> WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Leafy Dreams. Crafted with Love.
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <!-- 🔥 Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    <!-- 🔧 Your Firebase Config (edit firebase-config.js with your keys) -->
+    <script src="firebase-config.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
