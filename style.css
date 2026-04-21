@@ -565,8 +565,9 @@ h3 {
 .hero-featured-image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     transition: var(--transition-smooth);
+    padding: 20px;
 }
 
 .hero-image-container:hover .hero-featured-image {
@@ -1759,7 +1760,7 @@ footer {
         text-align: center;
     }
 
-    .hero-image-container { height: 200px; order: -1; width: 100%; }
+    .hero-image-container { height: clamp(250px, 50vw, 350px); order: -1; width: 100%; background: var(--white); }
     .hero-main-title { font-size: 1.7rem; line-height: 1.2; }
     .section-title { font-size: 1.7rem; margin-bottom: 1.5rem; }
 
